@@ -31,7 +31,8 @@ Devices with SSL support:
 Devices without:
 
 `wget https://github.com/A2nkF/oh-my-zsh/archive/master.zip --no-check-certificate && mv oh-my-zsh-master .oh-my-zsh`
- 
+
+Now run the installation script 
 
 ```shell
 sh -c "$(wget https://raw.githubusercontent.com/A2nkF/oh-my-zsh/master/tools/install.sh -O -)"
