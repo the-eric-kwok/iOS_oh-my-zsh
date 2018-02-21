@@ -24,22 +24,13 @@ main() {
   # which may fail on systems lacking tput or terminfo
   set -e
 
-  CHECK_ZSH_INSTALLED=$(grep /zsh$ /etc/shells | wc -l)
-  if [ ! $CHECK_ZSH_INSTALLED -ge 1 ]; then
-    printf "${YELLOW}Zsh is not installed!${NORMAL} Please install zsh first!\n"
-    exit
-  fi
-  unset CHECK_ZSH_INSTALLED
-
-  if [ ! -n "$ZSH" ]; then
     ZSH=~/.oh-my-zsh
-  fi
 
-  if [ -d "$ZSH" ]; then
-    printf "${YELLOW}You already have Oh My Zsh installed.${NORMAL}\n"
-    printf "You'll need to remove $ZSH if you want to re-install.\n"
-    exit
-  fi
+  #if [ -d "$ZSH" ]; then
+   # printf "${YELLOW}You already have Oh My Zsh installed.${NORMAL}\n"
+   # printf "You'll need to remove $ZSH if you want to re-install.\n"
+   # exit
+  #fi
 
   # Prevent the cloned repository from having insecure permissions. Failing to do
   # so causes compinit() calls to fail with "command not found: compdef" errors
@@ -61,10 +52,6 @@ main() {
       exit 1
     fi
   fi
-  env git clone --depth=1 https://github.com/robbyrussell/oh-my-zsh.git $ZSH || {
-    printf "Error: git clone of oh-my-zsh repo failed\n"
-    exit 1
-  }
 
 
   printf "${BLUE}Looking for an existing zsh config...${NORMAL}\n"
@@ -80,9 +67,6 @@ main() {
   " ~/.zshrc > ~/.zshrc-omztemp
   mv -f ~/.zshrc-omztemp ~/.zshrc
 
-  # If this user's login shell is not already "zsh", attempt to switch.
-  TEST_CURRENT_SHELL=$(expr "$SHELL" : '.*/\(.*\)')
-  if [ "$TEST_CURRENT_SHELL" != "zsh" ]; then
     # If this platform provides a "chsh" command (not Cygwin), do it, man!
     if hash chsh >/dev/null 2>&1; then
       printf "${BLUE}Time to change your default shell to zsh!${NORMAL}\n"
