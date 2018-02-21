@@ -6,7 +6,7 @@ This is a forked Version of [oh-my-zsh](https://github.com/robbyrussell/oh-my-zs
 
 For bug reports or enhancements, please open an [issue](https://github.com/A2nkF/dorfctl/issues) here.
 
-##Installation
+## Installation
 
 Install following packages from Cydia:
 
